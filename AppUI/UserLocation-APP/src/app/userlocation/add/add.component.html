@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="addUserLocation()">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Location Altitude</th>
+        <th>Location Longitude</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input type="text" placeholder="Enter Name" formControlName="userName" class="form-control" name="username"
+          [(ngModel)]="userName"
+          [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }" required>
+          <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback">
+            <div *ngIf="f['userName'].errors['required']">User Name is required!</div>
+          </div>
+        </td>
+        <td>{{userLatitude}}</td>
+        <td>{{userLongitude}}</td>
+        <td>
+          <button (click)="addUserLocation()" type="button" class="btn btn-dark mr-1">
+            Share
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</form>
